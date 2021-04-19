@@ -1,17 +1,26 @@
 
-let allDate = fetch("postData.json")
-    .then(response => response.json());
+
 //console.log(allDate)
 
-function fetchPosts(){
-      allDate.then(data=>data.map( function (value) {
+ function  fetchPosts(){
+     let allDate = fetch("postData.json")
+         .then(response => response.json());
+     allDate.then(data=>data.map( function (value) {
          delete (value.comments)
-          return (value);
+          return allDate;
     }))
 
 }
-fetchPosts()
-function fetchCommentsOfPost() {
+ function fetchCommentsOfPost(id) {
+     let allDate = fetch("postData.json")
+         .then(response => response.json());
+     allDate.then(data=>data.filter( function (value) {
+   if ( value.id===id){
+      console.log(value)
+
+   }
+
+}))
 
 }
 

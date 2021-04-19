@@ -3,6 +3,8 @@ import { fetchPosts, fetchCommentsOfPost, fetchReactionsOfComment } from './api.
 // function onLoad() {
 //
 // }
-fetchPosts();
-fetchCommentsOfPost();
+
+console.log(fetchPosts());
+
+console.log(fetchCommentsOfPost("55573462-be31-55df-901f-36603d3894e4"));
 fetchReactionsOfComment();

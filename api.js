@@ -1,27 +1,27 @@
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-
-//console.log(allDate)
-
- function  fetchPosts(){
-     let allDate = fetch("postData.json")
-         .then(response => response.json());
-     allDate.then(data=>data.map( function (value) {
-         delete (value.comments)
-          return allDate;
-    }))
+async function  fetchPosts() {
+    await wait(1000);
+    const allDate = await fetch("postData.json");
+        const data = await allDate.json();
+        return data.map(function (item) {
+            delete (item.comments);
+            return item;
+        });
 
 }
- function fetchCommentsOfPost(id) {
-     let allDate = fetch("postData.json")
-         .then(response => response.json());
-     allDate.then(data=>data.filter( function (value) {
-   if ( value.id===id){
-      console.log(value)
 
-   }
 
-}))
-
+ async function fetchCommentsOfPost(id) {
+     await wait(1000);
+     const allDate = await fetch("postData.json");
+     const data = await allDate.json();
+     let myPost = data.filter((item) => item.id === id);
+     if (myPost.length)
+        return myPost[0].comments;
+     return null;
 }
 
 function  fetchReactionsOfComment () {
@@ -31,5 +31,6 @@ function  fetchReactionsOfComment () {
 export {
     fetchPosts,
     fetchCommentsOfPost,
-    fetchReactionsOfComment
+    fetchReactionsOfComment,
+    wait
 };

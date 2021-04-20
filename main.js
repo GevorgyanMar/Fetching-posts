@@ -1,10 +1,9 @@
-import { fetchPosts, fetchCommentsOfPost, fetchReactionsOfComment } from './api.js';
+import { fetchPosts, fetchCommentsOfPost, fetchReactionsOfComment, wait } from './api.js';
 
-// function onLoad() {
-//
-// }
-
-console.log(fetchPosts());
-
-console.log(fetchCommentsOfPost("55573462-be31-55df-901f-36603d3894e4"));
-fetchReactionsOfComment();
+async function onLoad() {
+    console.log(await fetchPosts());
+    await wait(2000);
+    console.log(await fetchCommentsOfPost("55573462-be31-55df-901f-36603d3894e4"));
+    await wait(3000);
+}
+onLoad()

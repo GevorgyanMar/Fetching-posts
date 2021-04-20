@@ -2,7 +2,7 @@ function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function  fetchPosts() {
+ async function  fetchPosts() {
     await wait(1000);
     const allDate = await fetch("postData.json");
         const data = await allDate.json();
@@ -14,7 +14,7 @@ async function  fetchPosts() {
 }
 
 
- async function fetchCommentsOfPost(id) {
+async function fetchCommentsOfPost(id) {
      await wait(1000);
      const allDate = await fetch("postData.json");
      const data = await allDate.json();
@@ -24,13 +24,19 @@ async function  fetchPosts() {
      return null;
 }
 
-function  fetchReactionsOfComment () {
+async function fetchReactionsOfComment(id) {
+    await wait(1000);
+    const allDate = await fetch("postData.json");
+    const data = await allDate.json();
+    const comments = data.find((post) => allDate.id === id).comments;
+    console.log(comments[Math.floor(Math.random() * comments.length)].reactions);
+    return comments[Math.floor(Math.random() * comments.length)].reactions;
 
 }
-
 export {
     fetchPosts,
     fetchCommentsOfPost,
     fetchReactionsOfComment,
     wait
 };
+

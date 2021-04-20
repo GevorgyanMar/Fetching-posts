@@ -1,14 +1,6 @@
 import { fetchPosts, fetchCommentsOfPost, fetchReactionsOfComment, wait } from './api.js';
 
 
-
-
-
-
-
-
-
-
 async function onLoad() {
     console.log(await fetchPosts());
     await wait(2000);

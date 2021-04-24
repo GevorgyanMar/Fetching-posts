@@ -25,12 +25,24 @@ async function fetchCommentsOfPost(id) {
 }
 
 async function fetchReactionsOfComment(id) {
+   
     await wait(1000);
     const allDate = await fetch("postData.json");
     const data = await allDate.json();
-    const comments = data.find((post) => allDate.id === id).comments;
-    console.log(comments[Math.floor(Math.random() * comments.length)].reactions);
-    return comments[Math.floor(Math.random() * comments.length)].reactions;
+
+    const comments = data.find((post) => post.id === id);
+    let comment = comments.comments;
+   return  comment.forEach((val)=>{
+     if (val!==undefined){
+        let reactions =(val.reactions)
+    if(reactions !== undefined){
+        reactions.forEach((reac)=>{
+            console.log(reac)
+        })
+    }
+}
+
+    })
 
 }
 export {
